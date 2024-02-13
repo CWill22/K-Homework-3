@@ -56,17 +56,11 @@ class MediaProduct {
     public void setGenre(Genre genre) {
 	this.genre = genre;
     }
-  
- 	public class TapeRecordProduct extends MediaProduct{
 
-	}
-
-	public class CDRecordProduct extends MediaProduct {
-
-	}
-
-	public class VinylRecordProduct extends MediaProduct{
-
-	}
-
+    public String toString(){
+	return "MediaProduct{" + "title = " + title + 
+			    ", price = " + price + 
+			    ", year = " + year + 
+			    ", genre = " + genre + '}';
+    }
 }
