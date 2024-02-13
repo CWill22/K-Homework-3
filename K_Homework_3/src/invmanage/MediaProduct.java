@@ -63,4 +63,12 @@ class MediaProduct {
 			    ", year = " + year + 
 			    ", genre = " + genre + '}';
     }
+
+    public boolean addItem(MediaProduct product){
+	return inventory.add(new MediaProduct(product));
+    }
+
+    public boolean removeItem(MediaProduct product){
+	return inventory.remove(new MediaProduct(product));
+    }
 }
