@@ -16,7 +16,7 @@ class MediaProduct {
     protected int year;
     protected Genre genre;
   
-  public class TapeRecordProduct extends MediaProduct{
+ 	public class TapeRecordProduct extends MediaProduct{
 
 	}
 
