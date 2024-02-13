@@ -15,6 +15,17 @@ class MediaProduct {
     protected double price;
     protected int year;
     protected Genre genre;
+  
+  public class TapeRecordProduct extends MediaProduct{
 
+	}
+
+	public class CDRecordProduct extends MediaProduct {
+
+	}
+
+	public class VinylRecordProduct extends MediaProduct{
+
+	}
 
 }
