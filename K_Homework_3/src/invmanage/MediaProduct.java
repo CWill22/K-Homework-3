@@ -3,7 +3,6 @@ package invmanage;
 public class MediaProduct {
 
 // MediaProduct class
-class MediaProduct {
     protected String title;
     protected double price;
     protected int year;
