@@ -65,7 +65,7 @@ class MediaProduct {
     }
 
     public boolean updateItemPrice(MediaProduct product, double newPrice) {
-    if (product == null) {
+     if (product == null || newPrice < 0) {
         return false;
     }
    	 product.setPrice(newPrice);
