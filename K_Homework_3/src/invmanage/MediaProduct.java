@@ -16,15 +16,15 @@ class MediaProduct {
 	this.genre = genre;
     }
 
-	    // Copy constructor
+    // Copy constructor
     public MediaProduct(MediaProduct product) {
 	this.title = product.title;
 	this.price = product.price;
 	this.year = product.year;
 	this.genre = product.genre;
     }
-
-	    // Getters and setters
+	
+   // Getters and setters
     public String getTitle() {
 	return title;
     }
