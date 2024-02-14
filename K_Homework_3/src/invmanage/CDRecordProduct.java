@@ -6,8 +6,8 @@ class CDRecordProduct extends MediaProduct {
         super(title, price, year, genre);
     }
 
-    // Copy constructor
-    public CDRecordProduct(CDRecordProduct other) {
-        super(other);
-    }
+   // Copy constructor
+    public CDRecordProduct(CDRecordProduct product) {
+        super(product.title, product.price, product.year, product.genre);
+}
 }
