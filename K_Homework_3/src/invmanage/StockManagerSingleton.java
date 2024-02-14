@@ -40,13 +40,19 @@ public class StockManagerSingleton {
 	return inventory.remove(new MediaProduct(product));
     }
     public boolean saveStock()
-    public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
+    public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
+        ArrayList<MediaProduct> products = new ArrayList<MediaProduct>();
+        for (MediaProduct product : inventory){
+           if (product.getPrice() < maxPrice){
+                products.add(product);
+        }
+	    
+    }
+    return products;
+    }
     public void printListOfMediaProduct(ArrayList<MediaProduct>productList)
-    public ArrayList<VinylRecordProduct>
-    getVinylRecordList(ArrayList<MediaProduct> productList)
-    public ArrayList<CDRecordProduct>
-    getCDRecordsList(ArrayList<MediaProduct> productList)
-    public ArrayList<TapeRecordProduct>
-    getTapeRecordList(ArrayList<MediaProduct> productList)
+    public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList)
+    public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
+    public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList)
 
 }
