@@ -38,4 +38,14 @@ public class StockManagerSingleton {
     public boolean removeItem(MediaProduct product){
 	return inventory.remove(new MediaProduct(product));
     }
+    public boolean saveStock()
+    public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice)
+    public void printListOfMediaProduct(ArrayList<MediaProduct>productList)
+    public ArrayList<VinylRecordProduct>
+    getVinylRecordList(ArrayList<MediaProduct> productList)
+    public ArrayList<CDRecordProduct>
+    getCDRecordsList(ArrayList<MediaProduct> productList)
+    public ArrayList<TapeRecordProduct>
+    getTapeRecordList(ArrayList<MediaProduct> productList)
+
 }
