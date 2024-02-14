@@ -64,6 +64,14 @@ class MediaProduct {
 			    ", genre = " + genre + '}';
     }
 
+    public boolean updateItemPrice(MediaProduct product, double newPrice) {
+    if (product == null) {
+        return false;
+    }
+   	 product.setPrice(newPrice);
+	    return true;
+    }
+
     public boolean addItem(MediaProduct product){
 	return inventory.add(new MediaProduct(product));
     }
