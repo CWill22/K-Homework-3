@@ -63,20 +63,4 @@ class MediaProduct {
 			    ", year = " + year + 
 			    ", genre = " + genre + '}';
     }
-
-    public boolean updateItemPrice(MediaProduct product, double newPrice) {
-     if (product == null || newPrice < 0) {
-        return false;
-    }
-   	 product.setPrice(newPrice);
-	    return true;
-    }
-
-    public boolean addItem(MediaProduct product){
-	return inventory.add(new MediaProduct(product));
-    }
-
-    public boolean removeItem(MediaProduct product){
-	return inventory.remove(new MediaProduct(product));
-    }
 }
