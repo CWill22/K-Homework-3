@@ -15,8 +15,46 @@ public class StockManagerSingleton {
 		
 			Scanner fileIn = new Scanner(new FileInputStream(inventoryFilePath));
 			
-			
-			}catch(FileNotFoundException e)
+			if (fileIn.hasNext()) {
+				fileIn.nextLine(); // Skip the first line, which is the header
+			}
+			else {
+				// If the file is empty, return false
+                return false;
+            }
+			for(fileIn.hasNextLine()){
+				// Split the line into an array of strings
+				String line=fileIn.nextLine();
+				splitLine = line.split(",");
+				
+				// Convert the strings to the appropriate data types
+				String type = splitLine[0];
+				String title = splitLine[1];
+				double price = Double.parseDouble(splitLine[2]);
+				int year = Integer.parseInt(splitLine[3]);
+				Genre genre = Genre.valueOf(splitLine[4]);
+				
+			// Create a new object of the appropriate type
+				if(type.equals("CD")) {
+					//create a CD object
+					CDRecordProduct cd = new CDRecordProduct(title, price, year, genre);
+					
+                }
+                else if(type.equals("Vinyl")) {
+                    //create a Vinyl object
+                	VinylRecordProduct vinyl = new VinylRecordProduct(title, price, year, genre);
+                }
+                else if(type.equals("Tape")) {
+                    //create a Tape object
+                	TapeProductProduct tape = new TapeProduct(title, price, year, genre);
+                }
+                else {
+                    return false;
+                }
+                
+             
+			}
+				}catch(FileNotFoundException e)
 			{
 				e.printStackTrace();
 				return false;
