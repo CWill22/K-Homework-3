@@ -7,6 +7,6 @@ class VinylRecordProduct extends MediaProduct {
 
     // Copy constructor
     public VinylRecordProduct(CDRecordProduct other) {
-        super(other);
+        super(product.title, product.price, product.year, product.genre);
     }
 }
