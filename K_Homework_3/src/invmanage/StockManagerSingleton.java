@@ -4,6 +4,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.BufferedWriter;
+import java.io.IOExpection;
+import java.io.FileWriter;
 
 public class StockManagerSingleton {
 
@@ -79,8 +82,18 @@ public class StockManagerSingleton {
 		return this.inventory.remove(new MediaProduct(product));
     }
     public boolean saveStock() {
-		return true;//Someone needs to do this
-	}
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"))) {
+			writer.write("Type,Title,Price,Year,Genre\n");
+			for (MediaProduct product : inventory) {
+				writer.write(String.format(%s,%s,%,2f,%d,%s,\n", product.getClass.getSmipleName(),
+					     product.getTitle(), product.getPrice(), product.getYear(), product.getGenre().toString()));
+			}
+			return true;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return false;
+		}
+    }
     public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
         ArrayList<MediaProduct> products = new ArrayList<MediaProduct>();
         for (MediaProduct product : inventory){
