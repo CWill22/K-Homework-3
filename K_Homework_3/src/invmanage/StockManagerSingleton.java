@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.io.BufferedWriter;
-import java.io.IOExpection;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class StockManagerSingleton {
 
@@ -85,9 +85,8 @@ public class StockManagerSingleton {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"))) {
 			writer.write("Type,Title,Price,Year,Genre\n");
 			for (MediaProduct product : inventory) {
-				writer.write(String.format(%s,%s,%,2f,%d,%s,\n", product.getClass.getSmipleName(),
-					     product.getTitle(), product.getPrice(), product.getYear(), product.getGenre().toString()));
-			}
+				writer.write(String.format("%s,%s,%.2f,%d,%s,\n", product.getClass().getSimpleName(), product.getTitle(), product.getPrice(), product.getYear(), product.getGenre().toString()));
+			} 
 			return true;
 		} catch (IOException e) {
 			e.printStackTrace();
