@@ -2,10 +2,10 @@ package invmanage;
 
 // CDRecordProduct class
 class CDRecordProduct extends MediaProduct {
-    private String title;
-    private double price;
-    private int year;
-    private Genre genre;
+    public String title;
+    public double price;
+    public int year;
+    public Genre genre;
 
     public CDRecordProduct(String title, double price, int year, Genre genre) {
         super(title, price, year, genre);

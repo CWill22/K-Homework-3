@@ -6,7 +6,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class StockManagerSingleton {
-		
+
+	public ArrayList<MediaProduct> inventory;
 	public boolean initializeStock() {
 		try {
 			
@@ -63,34 +64,36 @@ public class StockManagerSingleton {
 	}
 	
     public boolean updateItemPrice(MediaProduct product, double newPrice) {
-     if (product == null || newPrice < 0) {
-        return false;
-    }
-   	 product.setPrice(newPrice);
+    	if (product == null || newPrice < 0) {
+        	return false;
+    	}
+   		product.setPrice(newPrice);
 	    return true;
     }
 
     public boolean addItem(MediaProduct product){
-	return inventory.add(new MediaProduct(product));
+		return this.inventory.add(new MediaProduct(product));
     }
 
     public boolean removeItem(MediaProduct product){
-	return inventory.remove(new MediaProduct(product));
+		return this.inventory.remove(new MediaProduct(product));
     }
-    public boolean saveStock()
+    public boolean saveStock() {
+		return true;//Someone needs to do this
+	}
     public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
         ArrayList<MediaProduct> products = new ArrayList<MediaProduct>();
         for (MediaProduct product : inventory){
-           if (product.getPrice() < maxPrice){
+           if (product.getPrice() < maxPrice) {
                 products.add(product);
-        }
-	    
+        	}
+	
+    	}
+   	 	return products;
     }
-    return products;
-    }
-    public void printListOfMediaProduct(ArrayList<MediaProduct>productList)
-    public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList)
-    public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList)
-    public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList)
+    public void printListOfMediaProduct(ArrayList<MediaProduct>productList) {}
+    public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList) {}
+    public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList) {}
+    public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList) {}
 
 }
