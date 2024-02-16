@@ -48,28 +48,24 @@ public class StockManagerSingleton {
 					//create a CD object
 					CDRecordProduct cd = new CDRecordProduct(title, price, year, genre);
 					ec= addItem(cd);
-					if(ec==false) {
-						return false;
-					}
+					
 					
                 }
                 else if(type.equals("Vinyl")) {
                     //create a Vinyl object
                 	VinylRecordProduct vinyl = new VinylRecordProduct(title, price, year, genre);
                 	ec= addItem(vinyl);
-                	if(ec==false) {
-                		return false;
-                	}
+                	
                 }
                 else if(type.equals("Tape")) {
                     //create a Tape object
                 	TapeRecordProduct tape = new TapeRecordProduct(title, price, year, genre);
                 	ec= addItem(tape);
-					if (ec == false) {
-						return false;
-					}
+					
                 }
-                else {
+                if(ec == false) {
+			//close file
+			fileIn.close();
                     return false;
                 }
 			}//endwhile
