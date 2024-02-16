@@ -1,5 +1,7 @@
 package invmanage;
 
+import java.util.ArrayList;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -17,7 +19,7 @@ public class Main {
 			ArrayList<MediaProduct> productList = stockManager.getMediaProductBelowPrice(30);
 			if (!productList.isEmpty()) {
 				MediaProduct productToUpdate = productList.get(0);
-				stockManager.updateItemPrice(produceToUpdate, 25.99);
+				stockManager.updateItemPrice(productToUpdate, 25.99);
 			}
 
 			// Remove a product from stock
@@ -32,7 +34,7 @@ public class Main {
             		}
 
 			// Print list of media products
-            		ArrayList<MediaProduct> allProducts = stockManager.getMediaProductBelowPrice(Double.MAX_VALUE);
+            		ArrayList<MediaProduct> allProducts = stockManager.getMediaProductBelowPrice((int) Double.MAX_VALUE);
             		stockManager.printListOfMediaProduct(allProducts);
             
             		// Get lists of specific record types
