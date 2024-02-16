@@ -10,7 +10,6 @@ import java.io.IOException;
 
 public class StockManagerSingleton {
 
-	private static StockManagerSingleton instance = null;
 	public ArrayList<MediaProduct> inventory;
 	public boolean initializeStock() {
 		try {
