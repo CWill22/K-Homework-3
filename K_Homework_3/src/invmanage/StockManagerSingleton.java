@@ -26,10 +26,11 @@ public class StockManagerSingleton {
 				// If the file is empty, return false
                 return false;
             }
-			for(fileIn.hasNextLine()){
+			
+			while(fileIn.hasNextLine())  {
 				// Split the line into an array of strings
 				String line=fileIn.nextLine();
-				splitLine = line.split(",");
+				String[] splitLine = line.split(",");
 				
 				// Convert the strings to the appropriate data types
 				String type = splitLine[0];
@@ -38,26 +39,38 @@ public class StockManagerSingleton {
 				int year = Integer.parseInt(splitLine[3]);
 				Genre genre = Genre.valueOf(splitLine[4]);
 				
+				boolean ec = false;
 			// Create a new object of the appropriate type
 				if(type.equals("CD")) {
 					//create a CD object
 					CDRecordProduct cd = new CDRecordProduct(title, price, year, genre);
+					ec= addItem(cd);
+					if(ec==false) {
+						return false;
+					}
 					
                 }
                 else if(type.equals("Vinyl")) {
                     //create a Vinyl object
                 	VinylRecordProduct vinyl = new VinylRecordProduct(title, price, year, genre);
+                	ec= addItem(vinyl);
+                	if(ec==false) {
+                		return false;
+                	}
                 }
                 else if(type.equals("Tape")) {
                     //create a Tape object
-                	TapeProductProduct tape = new TapeProduct(title, price, year, genre);
+                	TapeRecordProduct tape = new TapeRecordProduct(title, price, year, genre);
+                	ec= addItem(tape);
+					if (ec == false) {
+						return false;
+					}
                 }
                 else {
                     return false;
                 }
-                
-             
-			}
+			}//endfor
+			
 				}catch(FileNotFoundException e)
 			{
 				e.printStackTrace();
