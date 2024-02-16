@@ -3,21 +3,17 @@ package invmanage;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
 		// Create a new StockManagerSingleton instance
 		StockManagerSingleton stockManager = new StockManagerSingleton();
-
+		
+		// Initialize stock
 		boolean initialized = stockManager.initializeStock();
 
 		if (initialized) {
 			// Add a new VinylRecordProduct to the stock
-			stockManager.initializeStock();
-	   	 	
-		        
 			stockManager.addItem(new VinylRecordProduct("The Dark Side of the Moon", 29.99, 1973, Genre.ROCK));
 
-			//Update price of the product
+			// Update price of the product
 			ArrayList<MediaProduct> productList = stockManager.getMediaProductBelowPrice(30);
 			if (!productList.isEmpty()) {
 				MediaProduct productToUpdate = productList.get(0);
@@ -42,7 +38,7 @@ public class Main {
             		// Get lists of specific record types
             		ArrayList<VinylRecordProduct> vinylRecords = stockManager.getVinylRecordList(allProducts);
             		ArrayList<CDRecordProduct> cdRecords = stockManager.getCDRecordsList(allProducts);
-           		 ArrayList<TapeRecordProduct> tapeRecords = stockManager.getTapeRecordList(allProducts);
+           		ArrayList<TapeRecordProduct> tapeRecords = stockManager.getTapeRecordList(allProducts);
             
             		// Print lists of specific record types
            		System.out.println("Vinyl Records:");
