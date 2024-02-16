@@ -1,153 +1,65 @@
 package invmanage;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+public class MediaProduct {
 
-public class StockManagerSingleton {
+// MediaProduct class
+    protected String title;
+    protected double price;
+    protected int year;
+    protected Genre genre;
 
-	private static StockManagerSingleton instance = null;
-	public ArrayList<MediaProduct> inventory;
-	public boolean initializeStock() {
-		try {
-			
-		    // Read the Data from the csv file "inventory.csv" line by line
-			final String inventoryFilePath = "inventory.csv";
-		
-			Scanner fileIn = new Scanner(new FileInputStream(inventoryFilePath));
-			
-			if (fileIn.hasNext()) {
-				fileIn.nextLine(); // Skip the first line, which is the header
-			}
-			else {
-				// If the file is empty, return false
-                return false;
-            }
-			
-			while(fileIn.hasNextLine())  {
-				// Split the line into an array of strings
-				String line=fileIn.nextLine();
-				String[] splitLine = line.split(",");
-				
-				// Convert the strings to the appropriate data types
-				String type = splitLine[0];
-				String title = splitLine[1];
-				double price = Double.parseDouble(splitLine[2]);
-				int year = Integer.parseInt(splitLine[3]);
-				Genre genre = Genre.valueOf(splitLine[4]);
-				
-				boolean ec = false;
-			// Create a new object of the appropriate type
-				if(type.equals("CD")) {
-					//create a CD object
-					CDRecordProduct cd = new CDRecordProduct(title, price, year, genre);
-					ec= addItem(cd);
-					if(ec==false) {
-						return false;
-					}
-					
-                }
-                else if(type.equals("Vinyl")) {
-                    //create a Vinyl object
-                	VinylRecordProduct vinyl = new VinylRecordProduct(title, price, year, genre);
-                	ec= addItem(vinyl);
-                	if(ec==false) {
-                		return false;
-                	}
-                }
-                else if(type.equals("Tape")) {
-                    //create a Tape object
-                	TapeRecordProduct tape = new TapeRecordProduct(title, price, year, genre);
-                	ec= addItem(tape);
-					if (ec == false) {
-						return false;
-					}
-                }
-                else {
-                    return false;
-                }
-			}//endfor
-			
-				}catch(FileNotFoundException e)
-			{
-				e.printStackTrace();
-				return false;
-			}
-		    return true;
-	}
+    public MediaProduct(String title, double price, int year, Genre genre) {
+	this.title = title;
+	this.price = price;
+	this.year = year;
+	this.genre = genre;
+    }
+
+    // Copy constructor
+    public MediaProduct(MediaProduct product) {
+	this.title = product.title;
+	this.price = product.price;
+	this.year = product.year;
+	this.genre = product.genre;
+    }
 	
-    public boolean updateItemPrice(MediaProduct product, double newPrice) {
-    	if (product == null || newPrice < 0) {
-        	return false;
-    	}
-   		product.setPrice(newPrice);
-	    return true;
+   // Getters and setters
+    public String getTitle() {
+	return title;
     }
 
-    public boolean addItem(MediaProduct product){
-		return this.inventory.add(new MediaProduct(product));
+    public void setTitle(String title) {
+	this.title = title;
     }
 
-    public boolean removeItem(MediaProduct product){
-		return this.inventory.remove(new MediaProduct(product));
-    }
-    public boolean saveStock() {
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter("inventory.csv"))) {
-			writer.write("Type,Title,Price,Year,Genre\n");
-			for (MediaProduct product : inventory) {
-				writer.write(String.format("%s,%s,%.2f,%d,%s,\n", product.getClass().getSimpleName(), product.getTitle(), product.getPrice(), product.getYear(), product.getGenre().toString()));
-			} 
-			return true;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return false;
-		}
-    }
-    public ArrayList<MediaProduct> getMediaProductBelowPrice(int maxPrice){
-        ArrayList<MediaProduct> products = new ArrayList<MediaProduct>();
-        for (MediaProduct product : inventory){
-           if (product.getPrice() < maxPrice) {
-                products.add(product);
-        	}
-	
-    	}
-   	 	return products;
-    }
-    public void printListOfMediaProduct(ArrayList<MediaProduct>productList) {
-    	        for (MediaProduct product : productList) {
-    	        	        	            System.out.println(product);
-    	        }
-    }
-    public ArrayList<VinylRecordProduct> getVinylRecordList(ArrayList<MediaProduct> productList) {
-		ArrayList<VinylRecordProduct> vinylList = new ArrayList<VinylRecordProduct>();
-		for (MediaProduct product : productList) {
-			if (product instanceof VinylRecordProduct) {
-				vinylList.add((VinylRecordProduct) product);
-			}
-		}
-		return vinylList;
-    }
-    public ArrayList<CDRecordProduct> getCDRecordsList(ArrayList<MediaProduct> productList) {
-    	        ArrayList<CDRecordProduct> cdList = new ArrayList<CDRecordProduct>();
-				for (MediaProduct product : productList) {
-					if (product instanceof CDRecordProduct) {
-						cdList.add((CDRecordProduct) product);
-					}
-				}
-				return cdList;
-    }
-    public ArrayList<TapeRecordProduct> getTapeRecordList(ArrayList<MediaProduct> productList) {
-    	        ArrayList<TapeRecordProduct> tapeList = new ArrayList<TapeRecordProduct>();
-    	        for (MediaProduct product : productList) {
-    	        	if (product instanceof TapeRecordProduct) {
-    	        		tapeList.add((TapeRecordProduct) product);
-					}
-    	         }
-    	                        return tapeList;
+    public double getPrice() {
+	return price;
     }
 
+    public void setPrice(double price) {
+	this.price = price;
+    }
+
+    public int getYear() {
+	return year;
+    }
+
+    public void setYear(int year) {
+	this.year = year;
+    }
+
+    public Genre getGenre() {
+	return genre;
+    }
+
+    public void setGenre(Genre genre) {
+	this.genre = genre;
+    }
+    @Override
+    public String toString(){
+	return "MediaProduct{" + "title = " + title + 
+			    ", price = " + price + 
+			    ", year = " + year + 
+			    ", genre = " + genre + '}';
+    }
 }
