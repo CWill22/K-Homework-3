@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class StockManagerSingleton {
 
+	private static StockManagerSingleton instance = null;
 	public ArrayList<MediaProduct> inventory;
 	public boolean initializeStock() {
 		try {
@@ -24,10 +25,10 @@ public class StockManagerSingleton {
 			}
 			else {
 				// If the file is empty, return false
-				fileIn.close(); // Close the fileIn resource
-				return false;
-			}
-			fileIn.close(); // Close the fileIn resource
+				//close file
+				fileIn.close();
+                return false;
+            }
 			
 			while(fileIn.hasNextLine())  {
 				// Split the line into an array of strings
@@ -71,13 +72,16 @@ public class StockManagerSingleton {
                 else {
                     return false;
                 }
-			}//endfor
+			}//endwhile
+				//close file
+				fileIn.close();
 			
 				}catch(FileNotFoundException e)
 			{
 				e.printStackTrace();
 				return false;
 			}
+	
 		    return true;
 	}
 	
@@ -90,16 +94,10 @@ public class StockManagerSingleton {
     }
 
     public boolean addItem(MediaProduct product){
-	    if (product == null) {
-        return false;
-	    }
 		return this.inventory.add(new MediaProduct(product));
     }
 
     public boolean removeItem(MediaProduct product){
-	    if (product == null) {
-        return false;
-	    }
 		return this.inventory.remove(new MediaProduct(product));
     }
     public boolean saveStock() {
