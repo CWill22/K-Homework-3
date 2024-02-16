@@ -24,8 +24,10 @@ public class StockManagerSingleton {
 			}
 			else {
 				// If the file is empty, return false
-                return false;
-            }
+				fileIn.close(); // Close the fileIn resource
+				return false;
+			}
+			fileIn.close(); // Close the fileIn resource
 			
 			while(fileIn.hasNextLine())  {
 				// Split the line into an array of strings
